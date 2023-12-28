@@ -1,0 +1,13 @@
+{
+  "name": "test_heartrate",
+  "version": "1.0.0",
+  "lockfileVersion": 3,
+  "requires": true,
+  "packages": {
+    "": {
+      "name": "test_heartrate",
+      "version": "1.0.0",
+      "license": "ISC"
+    }
+  }
+}
