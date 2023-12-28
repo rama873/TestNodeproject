@@ -1,9 +1,9 @@
 const fs = require('fs');
 
-// Read the JSON file
+// Read the JSON file with readFileSync
 
-const rawData = fs.readFileSync('./heartrate.json', 'utf8');
-const heartRateData = JSON.parse(rawData);
+const data = fs.readFileSync('./heartrate.json', 'utf8');
+const heartRateData = JSON.parse(data);
 const outputData = [];
 
 
@@ -32,8 +32,7 @@ outputData.forEach((dayData) => {
     dayData.min = Math.min(...dayData.measurements);
     dayData.max = Math.max(...dayData.measurements);
     dayData.median = calculateMedian(dayData.measurements);
-    // You can add more statistics calculations as needed
-    delete dayData.measurements; // Remove the raw measurements if you don't need them in the final output
+    delete dayData.measurements; 
   });
 
   function calculateMedian(arr) {
@@ -47,6 +46,7 @@ outputData.forEach((dayData) => {
     }
   }
 
+  // Writing the JSON file with writeFileSync
   fs.writeFileSync('./output.json', JSON.stringify(outputData, null, 2), 'utf8');
 
   console.log(outputData)
